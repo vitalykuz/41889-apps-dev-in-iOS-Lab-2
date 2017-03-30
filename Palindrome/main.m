@@ -11,21 +11,29 @@
 // declare function prototypes
 int getNumber();
 int isPalindrome(int number);
+NSString* convertIntToString(int intToConvertToString);
+NSMutableString* reverseString(NSString* stringToReverse);
 
 int main() {
 	@autoreleasepool
 	{
 		int number = getNumber();
-		if (number >= 0)
-		{
-			if (isPalindrome(number))
-			{
-				NSLog(@"\n%d is palindromic\n", number); }
-			else {
-				NSLog(@"\n%d is not palindromic\n", number); }
-		} else {
-			NSLog (@"Invalid number entered");
-		}
+        NSString* convertedString = convertIntToString(number);
+        NSLog(@"Converted String: %@", convertedString);
+
+        NSMutableString* reversedString = reverseString(convertedString);
+        NSLog(@"Reversed String: %@", reversedString);
+
+//		if (number >= 0)
+//		{
+//			if (isPalindrome(number))
+//			{
+//				NSLog(@"\n%d is palindromic\n", number); }
+//			else {
+//				NSLog(@"\n%d is not palindromic\n", number); }
+//		} else {
+//			NSLog (@"Invalid number entered");
+//		}
 	}
 	return 0;
 }
@@ -35,7 +43,6 @@ int getNumber()
 	int number = 0;
 	printf("Enter a number: ");
 	scanf("%d", &number);
-	printf("Your number is %d\n", number);
 	return number;
 }
 
@@ -44,6 +51,23 @@ int isPalindrome(int number)
 	return 1;
 }
 
+NSString* convertIntToString(int intToConvertToString) {
+	NSString* convertedString;
+    convertedString = [NSString stringWithFormat:@"%d",intToConvertToString];
+
+	return convertedString;
+}
+
+NSMutableString* reverseString(NSString* stringToReverse) {
+    NSMutableString *reversedString = [NSMutableString stringWithCapacity:[stringToReverse length]];
+
+    [stringToReverse enumerateSubstringsInRange:NSMakeRange(0,[stringToReverse length])
+                                 options:(NSStringEnumerationReverse | NSStringEnumerationByComposedCharacterSequences)
+                              usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+                                  [reversedString appendString:substring];
+                              }];
+    return reversedString;
+}
 
 
 
