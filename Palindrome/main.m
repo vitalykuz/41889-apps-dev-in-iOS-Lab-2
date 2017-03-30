@@ -13,6 +13,7 @@ int getNumber();
 int isPalindrome(int number);
 NSString* convertIntToString(int intToConvertToString);
 NSMutableString* reverseString(NSString* stringToReverse);
+BOOL areStringsEqual(NSString* originalString, NSMutableString *reversedOriginalString) ;
 
 int main() {
 	@autoreleasepool
@@ -23,6 +24,10 @@ int main() {
 
         NSMutableString* reversedString = reverseString(convertedString);
         NSLog(@"Reversed String: %@", reversedString);
+
+		BOOL isPalindrome = areStringsEqual(convertedString, reversedString);
+
+		NSLog(@"Polidrome: %d", isPalindrome);
 
 //		if (number >= 0)
 //		{
@@ -69,7 +74,9 @@ NSMutableString* reverseString(NSString* stringToReverse) {
     return reversedString;
 }
 
-
+BOOL areStringsEqual(NSString* originalString, NSMutableString *reversedOriginalString) {
+	return [originalString isEqualToString: reversedOriginalString];
+}
 
 
 
