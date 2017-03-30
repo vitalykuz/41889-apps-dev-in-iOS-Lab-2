@@ -32,15 +32,15 @@ int main() {
 
 int getNumber()
 {
-	// code to scanf for number and test it
-	// return number or -1 if input is invalid
-	return 1;
+	int number = 0;
+	printf("Enter a number: ");
+	scanf("%d", &number);
+	printf("Your number is %d\n", number);
+	return number;
 }
 
 int isPalindrome(int number)
 {
-	// code to test is number is a palindrome.
-	// Return true or false (1 or 0)
 	return 1;
 }
 
