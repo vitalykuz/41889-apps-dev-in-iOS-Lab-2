@@ -9,16 +9,16 @@
 #import <Foundation/Foundation.h>
 
 // declare function prototypes
-int getNumber();
-int isPalindrome(int number);
-NSString* convertIntToString(int intToConvertToString);
+NSInteger getNumber();
+NSString* convertIntToString(NSInteger intToConvertToString);
 NSMutableString* reverseString(NSString* stringToReverse);
-BOOL areStringsEqual(NSString* originalString, NSMutableString *reversedOriginalString) ;
+BOOL areStringsEqual(NSString* originalString, NSMutableString *reversedOriginalString);
+NSInteger convertStringToInt(NSString *stringToConvertToInt);
 
 int main() {
 	@autoreleasepool
 	{
-		int number = getNumber();
+		NSInteger number = getNumber();
         NSString* convertedString = convertIntToString(number);
         NSLog(@"Converted String: %@", convertedString);
 
@@ -27,38 +27,27 @@ int main() {
 
 		BOOL isPalindrome = areStringsEqual(convertedString, reversedString);
 
-		NSLog(@"Polidrome: %d", isPalindrome);
-
-//		if (number >= 0)
-//		{
-//			if (isPalindrome(number))
-//			{
-//				NSLog(@"\n%d is palindromic\n", number); }
-//			else {
-//				NSLog(@"\n%d is not palindromic\n", number); }
-//		} else {
-//			NSLog (@"Invalid number entered");
-//		}
+		if (isPalindrome) {
+			NSLog(@"Number: %li is palindromic ", number);
+		} else {
+			NSLog(@"Number %li is not palindromic ", number);
+		}
 	}
 	return 0;
 }
 
-int getNumber()
+NSInteger getNumber()
 {
-	int number = 0;
+	NSInteger number = 0;
 	printf("Enter a number: ");
-	scanf("%d", &number);
+	scanf("%li", &number);
 	return number;
 }
 
-int isPalindrome(int number)
-{
-	return 1;
-}
 
-NSString* convertIntToString(int intToConvertToString) {
+NSString* convertIntToString(NSInteger intToConvertToString) {
 	NSString* convertedString;
-    convertedString = [NSString stringWithFormat:@"%d",intToConvertToString];
+    convertedString = [NSString stringWithFormat:@"%li",intToConvertToString];
 
 	return convertedString;
 }
@@ -76,6 +65,11 @@ NSMutableString* reverseString(NSString* stringToReverse) {
 
 BOOL areStringsEqual(NSString* originalString, NSMutableString *reversedOriginalString) {
 	return [originalString isEqualToString: reversedOriginalString];
+}
+
+NSInteger convertStringToInt(NSString *stringToConvertToInt) {
+	NSInteger number = [stringToConvertToInt integerValue];
+	return number;
 }
 
 
